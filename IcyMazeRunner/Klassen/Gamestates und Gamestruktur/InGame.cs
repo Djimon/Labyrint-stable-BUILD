@@ -345,7 +345,7 @@ namespace IcyMazeRunner.Klassen
             mMap.draw(win);
             pRunner.draw(win);
             win.Draw(spFogOfWar);
-            compass.draw(win);
+            //compass.draw(win);
             win.SetMouseCursorVisible(false);
             if (menu != null)
             {
