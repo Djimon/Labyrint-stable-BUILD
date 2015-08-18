@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Klassen\Calculator.cs" />
+    <Compile Include="Klassen\Gameplay\enemy_move.cs" />
     <Compile Include="Klassen\Gameplay\MovableWallHandler.cs" />
     <Compile Include="Klassen\Gameplay\ObjectStructure\Entity.cs" />
     <Compile Include="Klassen\Gameplay\ObjectStructure\EntityHandler.cs" />

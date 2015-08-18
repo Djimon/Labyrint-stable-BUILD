@@ -23,7 +23,21 @@ namespace IcyMazeRunner.Klassen.Gameplay
 
         public void move() //andere Bewegungsmuster (e.g. Pathfinder)
         {
-        
+            // 0- top
+            // 1- right
+            // 2- bot
+            // 3- left
+            enemy_move top = new enemy_move(0, _distance());
+            enemy_move right = new enemy_move(1, _distance());
+            enemy_move bot = new enemy_move(2, _distance());
+            enemy_move left = new enemy_move(3, _distance());
+
+            enemy_move[] choose = new enemy_move[4];
+            choose[0] = top;
+            choose[1] = right;
+            choose[2] = bot;
+            choose[3] = left;
+            
         }
 
         public void move(Vector2f PlayerPosition)  //direkter weg zum player
