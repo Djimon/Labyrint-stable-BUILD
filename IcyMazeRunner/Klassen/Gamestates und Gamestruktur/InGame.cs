@@ -10,6 +10,7 @@ using IcyMazeRunner.Klassen;
 using SFML.Audio;
 using IcyMazeRunner.Klassen.Menüs;
 using IcyMazeRunner.Klassen.Gamestates_und_Gamestruktur.GUI;
+using IcyMazeRunner.Klassen.Gameplay;
 
 namespace IcyMazeRunner.Klassen
 {
@@ -34,6 +35,7 @@ namespace IcyMazeRunner.Klassen
         float targetdistance;
 
         Player pRunner;
+        Enemy ePeter;
 
         Sprite spBackGround;
         Sprite spFogOfWar;
@@ -123,7 +125,7 @@ namespace IcyMazeRunner.Klassen
             Map_2 (2263, 3336)
              */
 
-            bmMap = new Bitmap("Texturen/Map/Map_test.bmp");
+            bmMap = new Bitmap("Texturen/Map/Map_tutorial.bmp");
 
           /****************************************
            ************** KOMPASS *****************
@@ -141,7 +143,8 @@ namespace IcyMazeRunner.Klassen
             {
                 case 0:
                     mMap = new Map(bmMap); 
-                    pRunner = new Player(new Vector2f(281,91), mMap); // 190, 100 bei Map_1 gespeichert gewesen
+                    pRunner = new Player(new Vector2f(281,91), mMap); // //281,91)  190, 100 bei Map_1 gespeichert gewesen
+                    ePeter = new Enemy(new Vector2f(281,91),"Texturen/Player/downidle.png", mMap );//1085, 91
 
                     break;
 
@@ -278,7 +281,10 @@ namespace IcyMazeRunner.Klassen
                 ************** KOMPASS *****************
                 ****************************************/
                 compass.update();
-              
+
+
+               // ePeter.update();
+                ePeter.update(gtIngame);
                 
                 // bewegliche Mauern (if-Abfrage), Kollision mit Schalter
                 // später: Bewegung der Gegner, Geschosse, Anzeigen, Kollision
@@ -344,8 +350,10 @@ namespace IcyMazeRunner.Klassen
             win.SetView(vIngame);
             mMap.draw(win);
             pRunner.draw(win);
-            win.Draw(spFogOfWar);
-            //compass.draw(win);
+
+            ePeter.draw(win);
+         //   win.Draw(spFogOfWar);
+         //   compass.draw(win);
             win.SetMouseCursorVisible(false);
             if (menu != null)
             {
