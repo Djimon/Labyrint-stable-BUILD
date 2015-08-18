@@ -144,7 +144,7 @@ namespace IcyMazeRunner.Klassen
                 case 0:
                     mMap = new Map(bmMap); 
                     pRunner = new Player(new Vector2f(281,91), mMap); // //281,91)  190, 100 bei Map_1 gespeichert gewesen
-                    ePeter = new Enemy(new Vector2f(281,91),"Texturen/Player/downidle.png", mMap );//1085, 91
+                    ePeter = new Enemy(new Vector2f(281,91),"Texturen/Player/downidle.png", mMap, pRunner);//1085, 91
 
                     break;
 
