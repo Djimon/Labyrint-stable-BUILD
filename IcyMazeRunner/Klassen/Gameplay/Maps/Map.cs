@@ -47,7 +47,7 @@ namespace IcyMazeRunner.Klassen
         //public static String
 
 
-        /* ~~~~ Erstellen der Map mithilfe der Bitmap ~~~~ */
+        /* ~~~~ Erstellen der Map mithilfe der Bitmap ~~~~ */ //für onthyföy mapgeneratpr: bool edge
         public Map(Bitmap mask)
         {
             map = new Blocks[mask.Width, mask.Height];
@@ -105,7 +105,8 @@ namespace IcyMazeRunner.Klassen
                         B_walkable = true;
                     }
 
-
+                // wenn x = 0 || x = max, dann edge = true
+                // wenn y = 0 || x = max, dann edge = true
                 }
 
             }
