@@ -17,16 +17,15 @@ namespace IcyMazeRunner.Klassen.Gameplay
         Map mMap;
         float F_speed = 0.5f;
 
-        public Enemy(Vector2f _position, string texturePath, Map map, Player player)
+        public Enemy(Vector2f _position, string texturePath, Map map)
         {
-            this.player = player;
             position = _position;
             mMap = map;
             Texture txEnemy = new Texture(texturePath);
             sprite = new Sprite(txEnemy);
         }
 
-        public void move(Map mmmap,GameTime time) //andere Bewegungsmuster (e.g. Pathfinder)
+        public void move(Map mmmap, GameTime time, Player player) //andere Bewegungsmuster (e.g. Pathfinder)
         {
             F_speed = 0.4f * time.ElapsedTime.Milliseconds;
  
@@ -39,19 +38,16 @@ namespace IcyMazeRunner.Klassen.Gameplay
             Vector2f playerDistance = new Vector2f(player.getXPosition(),player.getYPosition());
 
             //Vektoren ausgehend vom Enemy nach oben unten rechts und links -> Distanz zum Player
-            Vector2f tmp = new Vector2f(position.X, position.Y-100);
-            if (mmmap.iswalkable((sprite), new Vector2f(position.X, position.Y))) { }
-            else
-            {
+            Vector2f tmp = new Vector2f(position.X, position.Y-10);
                 float testTop = calc.getDistance(playerDistance, tmp);
 
-                tmp = new Vector2f(position.X + 100, position.Y);
+                tmp = new Vector2f(position.X + 10, position.Y);
                 float testRight = calc.getDistance(playerDistance, tmp);
 
-                tmp = new Vector2f(position.X, position.Y + 100);
+                tmp = new Vector2f(position.X, position.Y + 10);
                 float testBot = calc.getDistance(playerDistance, tmp);
 
-                tmp = new Vector2f(position.X - 100, position.Y);
+                tmp = new Vector2f(position.X - 10, position.Y);
                 float testLeft = calc.getDistance(playerDistance, tmp);
 
                 //Zuweisung der Distanzen und (0,1,2,3) kodierter Richtung
@@ -124,12 +120,11 @@ namespace IcyMazeRunner.Klassen.Gameplay
                 switch (go)
                 {
                     case 0: position = new Vector2f(position.X, position.Y - 1); break;
-                    case 1: position = new Vector2f(position.X + 1, position.Y); break;
+                    case 1: position = new Vector2f(position.X - 1, position.Y); break;
                     case 2: position = new Vector2f(position.X, position.Y + 1); break;
-                    case 3: position = new Vector2f(position.X - 1, position.Y); break;
+                    case 3: position = new Vector2f(position.X + 1, position.Y); break;
                     case 4: break;
                 }
-            }
         }
 
         public void move(Vector2f PlayerPosition)  //direkter weg zum player
@@ -139,9 +134,10 @@ namespace IcyMazeRunner.Klassen.Gameplay
             position += direction / (length * 5);
         }
 
-        public void update(GameTime Gtime)
+        public void update(GameTime Gtime, Player player)
         {
-            move(this.mMap, Gtime);
+            Player Paolo = player;
+            move(this.mMap, Gtime, Paolo);
         }
 
         public void draw(RenderWindow win)
