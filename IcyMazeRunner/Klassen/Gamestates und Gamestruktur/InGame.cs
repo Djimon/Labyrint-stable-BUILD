@@ -24,13 +24,15 @@ namespace IcyMazeRunner.Klassen
         Map mMap;
         View vIngame;
         Bitmap bmMap;
-        GUI Health;
-        GUI Kompass;
-        GUI Skills;
-        GUI Collected;
-        GUI SoftPopUp;
-
         Kompass compass;
+        Healthbar HPbar;
+        //GUI Health;
+        //GUI Kompass;
+        //GUI Skills;
+        //GUI Collected;
+        //GUI SoftPopUp;
+
+       
         Vector2f vTarget = new Vector2f(-500, 500);
         float targetdistance;
 
@@ -108,7 +110,7 @@ namespace IcyMazeRunner.Klassen
             spFogOfWar = new Sprite(new Texture("Texturen/Map/Fog_of_War.png"));
             spFogOfWar.Position = new Vector2f(-1,-1);
 
-            Kompass = new GUI(vIngame);
+           // Kompass = new GUI(vIngame);
 
             setTypeOfDeath(0);
             B_isDeathAnimationOver=false;
@@ -172,8 +174,9 @@ namespace IcyMazeRunner.Klassen
             }
 
 
-
-            compass = new Kompass(vIngame.Center, vTarget,vIngame); //WHY????
+            // GUI
+            HPbar = new Healthbar(pRunner, vIngame);
+            compass = new Kompass(vIngame.Center, vIngame, vTarget); //WHY????
           
             //        hier Fallen und Hindernisse laden???
             //         ziel?
@@ -186,7 +189,7 @@ namespace IcyMazeRunner.Klassen
         /* ~~~~ Update ~~~~ */
         public EGameStates update(GameTime gametime)
         {
-
+            gtIngame.update();
 
             if (menu != null)
             {
@@ -242,7 +245,7 @@ namespace IcyMazeRunner.Klassen
                 }
                  */
 
-                gtIngame.update();
+                
 
                 if (pRunner.getPlayerHealth() == 0)
                 {
@@ -258,6 +261,7 @@ namespace IcyMazeRunner.Klassen
                 }
 
                 targetdistance = calc.getDistance(pRunner.getplayerSprite().Position, vTarget);
+
                 if (targetdistance <200)
                 {
                     I_level++;
@@ -277,23 +281,19 @@ namespace IcyMazeRunner.Klassen
                 }
 
                 pRunner.update(gtIngame);
-                /****************************************
-                ************** KOMPASS *****************
-                ****************************************/
-                compass.update();
 
 
-               // ePeter.update();
-                ePeter.update(gtIngame, pRunner);
+
+             
+               // ePeter.update(gtIngame, pRunner);
                 
                 // bewegliche Mauern (if-Abfrage), Kollision mit Schalter
                 // später: Bewegung der Gegner, Geschosse, Anzeigen, Kollision
 
                 spBackGround.Position = new Vector2f(vIngame.Center.X - 531, vIngame.Center.Y - 360);  // globale fensgtergrößen-vaiable?;
-                spFogOfWar.Position = new Vector2f(vIngame.Center.X - 531, vIngame.Center.Y - 360);  // globale fensgtergrößen-vaiable?;
                 vIngame.Move(new Vector2f((pRunner.getXPosition() + (pRunner.getWidth() / 2)), (pRunner.getYPosition() + (pRunner.getHeigth() / 2))) - vIngame.Center);
 
-
+                spFogOfWar.Position = new Vector2f(vIngame.Center.X - 531, vIngame.Center.Y - 360);  // globale fensgtergrößen-vaiable?;
 
 
                 /*~~~~~~~Collision mit Ziel, SPrite ziel muss noch übergebenw erden aus (Map/Blocks?)~~~~*/
@@ -304,6 +304,14 @@ namespace IcyMazeRunner.Klassen
                 //    view = new View(new FloatRect(0, 0, 1062, 720));
                 //    return EGameStates.gameWon;
                 //}
+
+                /*************************************
+                 ************** GUI ******************
+                 *************************************/
+
+                compass.update(vTarget);
+                HPbar.update();
+
 
             }
             return EGameStates.inGame;
@@ -350,10 +358,13 @@ namespace IcyMazeRunner.Klassen
             win.SetView(vIngame);
             mMap.draw(win);
             pRunner.draw(win);
+            //ePeter.draw(win);
+         
+            //GUI:
+            compass.draw(win);
+            HPbar.draw(win);
 
-            ePeter.draw(win);
-         //   win.Draw(spFogOfWar);
-            compass.draw(spKompass,win);
+            //win.Draw(spFogOfWar);
             win.SetMouseCursorVisible(false);
             if (menu != null)
             {

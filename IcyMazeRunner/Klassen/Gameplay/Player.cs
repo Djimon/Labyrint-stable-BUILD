@@ -71,7 +71,8 @@ namespace IcyMazeRunner
 
         /************ Player attributes ***********/
 
-        int I_healthPoints;
+        int I_healthPoints =33;
+        int I_maxHealth =100;
         float F_runningSpeed;
         // int basicDamage
         // int basicDefence
@@ -186,6 +187,11 @@ namespace IcyMazeRunner
         public int getPlayerHealth()
         {
             return I_healthPoints;
+        }
+
+        public int getPlayerMaxHealth()
+        {
+            return I_maxHealth;
         }
 
         public void setPlayerHealth(int data)
