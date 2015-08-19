@@ -38,7 +38,7 @@ namespace IcyMazeRunner.Klassen
             return this.blockType;
         }
 
-        /* ~~~~ Konstruktor ~~~~ */
+        /* ~~~~ Konstruktor ~~~~ */ //Für mapgenerator on the fly, weiterer parameter: bool edge)
         public Blocks(int blockType, Vector2f position, Texture txBlock)
         {
             this.blockType = blockType;
