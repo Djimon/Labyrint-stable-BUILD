@@ -108,7 +108,7 @@ namespace IcyMazeRunner.Klassen
             spFogOfWar = new Sprite(new Texture("Texturen/Map/Fog_of_War.png"));
             spFogOfWar.Position = new Vector2f(-1,-1);
 
-            Kompass = new GUI();
+            Kompass = new GUI(vIngame);
 
             setTypeOfDeath(0);
             B_isDeathAnimationOver=false;
@@ -173,7 +173,7 @@ namespace IcyMazeRunner.Klassen
 
 
 
-            compass = new Kompass(vIngame.Center, vTarget,new Texture("Texturen/Menü+Anzeigen/GUI/needle.png")); //WHY????
+            compass = new Kompass(vIngame.Center, vTarget,vIngame); //WHY????
           
             //        hier Fallen und Hindernisse laden???
             //         ziel?
@@ -353,7 +353,7 @@ namespace IcyMazeRunner.Klassen
 
             ePeter.draw(win);
          //   win.Draw(spFogOfWar);
-         //   compass.draw(win);
+            compass.draw(spKompass,win);
             win.SetMouseCursorVisible(false);
             if (menu != null)
             {

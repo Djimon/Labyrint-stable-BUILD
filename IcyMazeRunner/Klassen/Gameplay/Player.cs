@@ -234,7 +234,7 @@ namespace IcyMazeRunner
             else
             {
 
-
+                // links (-speed, 0)
             if (Keyboard.IsKeyPressed(Keyboard.Key.A) && map.iswalkable((spPlayer), new Vector2f(-F_runningSpeed, 0)))
             {
                 playerPosition = new Vector2f(playerPosition.X - F_runningSpeed, playerPosition.Y);
@@ -243,7 +243,7 @@ namespace IcyMazeRunner
                 B_isPressed = true;
                 I_rememberidle = 0;
             }
-
+                // rechts (speed, 0)
             if (Keyboard.IsKeyPressed(Keyboard.Key.D) && map.iswalkable((spPlayer), new Vector2f(F_runningSpeed, 0)))
             {
                 playerPosition = new Vector2f(playerPosition.X + F_runningSpeed, playerPosition.Y);
@@ -252,7 +252,7 @@ namespace IcyMazeRunner
                 B_isPressed = true;
                 I_rememberidle = 1;
             }
-
+                // hoch (0, -speed)
             if (Keyboard.IsKeyPressed(Keyboard.Key.W) && map.iswalkable((spPlayer), new Vector2f(0, -F_runningSpeed)))
             {
                 playerPosition = new Vector2f(playerPosition.X, playerPosition.Y - F_runningSpeed);
@@ -261,7 +261,7 @@ namespace IcyMazeRunner
                 B_isPressed = true;
                 I_rememberidle = 2;
             }
-
+                // runter (0,speed)
             if (Keyboard.IsKeyPressed(Keyboard.Key.S) && map.iswalkable((spPlayer), new Vector2f(0, F_runningSpeed)))
             {
                 playerPosition = new Vector2f(playerPosition.X, playerPosition.Y + F_runningSpeed);
