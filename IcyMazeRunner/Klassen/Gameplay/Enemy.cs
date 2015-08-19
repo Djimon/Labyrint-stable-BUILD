@@ -10,7 +10,7 @@ namespace IcyMazeRunner.Klassen.Gameplay
 {
     class Enemy
     {
-        Player player;
+        //Player player;
         Vector2f position;
         Sprite sprite;
         Calculator calc = new Calculator();
@@ -119,9 +119,9 @@ namespace IcyMazeRunner.Klassen.Gameplay
 
                 switch (go)
                 {
-                    case 0: position = new Vector2f(position.X, position.Y - 1); break;
+                    case 0: position = new Vector2f(position.X, position.Y + 1); break;
                     case 1: position = new Vector2f(position.X - 1, position.Y); break;
-                    case 2: position = new Vector2f(position.X, position.Y + 1); break;
+                    case 2: position = new Vector2f(position.X, position.Y - 1); break;
                     case 3: position = new Vector2f(position.X + 1, position.Y); break;
                     case 4: break;
                 }
