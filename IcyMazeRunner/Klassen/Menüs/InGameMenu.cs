@@ -53,8 +53,19 @@ namespace IcyMazeRunner.Klassen.Menüs
         Sprite spLoadGame; // für später
 
         /* ~~~~ Variablen für Menüsteuerung ~~~~*/
+        ///<summary>
+        ///Variable, die speichert, welche Option ausgewählt ist.
+        ///</summary>
         int select;
+        
+        ///<summary>
+        /// Überprüft, ob Taste gedrückt ist.
+        ///</summary>
         bool isPressed;
+        
+        ///<summary>
+        /// Beendet das Menp, wenn true.
+        ///</summary>
         bool closeMenu;
 
         /* ~~~~ Steuerung, um Menü zu schließen oder nicht zu schließen ~~~~*/
