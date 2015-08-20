@@ -12,8 +12,15 @@ namespace IcyMazeRunner.Klassen
     {
 
         /* ~~~~ Variablen für Menüsteuerung ~~~~*/
-
+        
+        ///<summary>
+        /// Switch-Variable für aktuell ausgewählte Option.
+        ///</summary>
         int I_select;
+        
+        ///<summary>
+        /// Kontrolliert ob Taste gedrückt ist.
+        ///</summary>
         bool B_isPressed;
         View vMenu;
 
