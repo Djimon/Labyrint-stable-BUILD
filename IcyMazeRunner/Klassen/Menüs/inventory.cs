@@ -15,6 +15,7 @@ namespace IcyMazeRunner.Klassen.Menüs
 
         /* ~~~~ Variablen für Menüsteuerung ~~~~*/
         int select;
+        int I_State = 0;
         bool isPressed;
         bool closeInv;
 
@@ -64,12 +65,12 @@ namespace IcyMazeRunner.Klassen.Menüs
             // Cases anpassen!
             switch (select)
             {
-                case 0: //continue
+                case 0: //slot1
                     {
                         //spSelected.Texture = txContinueSelected;
                         break;
                     }
-                case 1: //main menü
+                case 1: //slot2
                     {
                         //spSelected.Texture = txGoMainMenuSelected;
                         break;
@@ -79,7 +80,7 @@ namespace IcyMazeRunner.Klassen.Menüs
                         //spSelected.Texture = txGoMainMenuSelected;
                         break;
                     }
-                case 2: //controls
+                case 2: //slot3
                     {
                         //spSelected.Texture = txControlsSelected;
                         break;
@@ -90,7 +91,7 @@ namespace IcyMazeRunner.Klassen.Menüs
                         
                         break;
                     }
-                case 3: //Map (load)
+                case 3: //slot4
                     {
                         //spSelected.Texture = txLoadGameSelected;
                         break;
@@ -104,12 +105,40 @@ namespace IcyMazeRunner.Klassen.Menüs
 
 
             // Update der Gamestates
-
-            if (select == 0 && Keyboard.IsKeyPressed(Keyboard.Key.Return))
-            {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                 setCloseInv(true);
-                Console.WriteLine("enter");
+            // mehrere Reiter: 
+            // Reiter 1: Inventar(I)
+            // Reiter 2: Rätsel (R)
+            // Reiter 3: Diary (D)
+            
+            if (Keyboard.IsKeyPressed(Keyboard.Key.I))
+                I_State = 1;
+            if (Keyboard.IsKeyPressed(Keyboard.Key.R))
+                I_State = 2;
+            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+                I_State = 3;
+            if keyboard.IsKeyPressed(Keyboard.Key.C))
+                I_State = 0;
+            
+            
+            switch(I_State)
+            {
+                case 0: //Charackterübersicht aktiv
+                        //Reiter = Charackterfenster.png
+                        break;
+                case 1: //Inventar aktiv (eventuell mir case 2 verschmelzen)
+                        //Reiter = Inventory.png
+                        break;
+                case 2: //Rätsel-Inventar aktiv
+                        //Reiter = inventroy.png
+                        break;
+                case 3: // Tagebuch /Questlog aktiv
+                        //Reiter = questlog.png
+                        break;
             }
+            
+            
             if ((select == 1 || select == -3) && Keyboard.IsKeyPressed(Keyboard.Key.Return))
             {
                 vInvView.Reset(new FloatRect(0, 0, 1062, 720));  //globale Fenstervariable
