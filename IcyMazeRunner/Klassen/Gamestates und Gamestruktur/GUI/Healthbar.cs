@@ -18,6 +18,9 @@ namespace IcyMazeRunner.Klassen.Gamestates_und_Gamestruktur.GUI
         View view;
         Texture txHP = new Texture("Texturen/Menü+Anzeigen/InGame Menü/Steuerung Platzhalter.png");
 
+	///<summary>
+	///Lebensbalken des Spielers player in der aktuellen view.
+	///</summary>
         public Healthbar(Player player, View view)
         {
             this.view = view;
@@ -33,7 +36,10 @@ namespace IcyMazeRunner.Klassen.Gamestates_und_Gamestruktur.GUI
             spFG.Position = spBG.Position;
 
         }
-
+	
+	///<summary>
+	/// skaliert Lebensbalken (aktuelle HP) prozentual zur maximalen HP.
+	///</summary>
         public Sprite scale(Sprite sprite)
         {
             // die "-1" ist mir noch unklar, wird durch tests verstanden (hfftl.)
