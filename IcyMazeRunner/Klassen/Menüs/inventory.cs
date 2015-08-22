@@ -118,7 +118,7 @@ namespace IcyMazeRunner.Klassen.Menüs
                 I_State = 2;
             if (Keyboard.IsKeyPressed(Keyboard.Key.D))
                 I_State = 3;
-            if keyboard.IsKeyPressed(Keyboard.Key.C))
+            if (Keyboard.IsKeyPressed(Keyboard.Key.C))
                 I_State = 0;
             
             
