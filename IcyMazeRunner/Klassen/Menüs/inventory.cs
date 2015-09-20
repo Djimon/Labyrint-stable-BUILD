@@ -127,7 +127,7 @@ namespace IcyMazeRunner.Klassen.Menüs
                 case 0: //Charackterübersicht aktiv
                         //Reiter = Charackterfenster.png
                         break;
-                case 1: //Inventar aktiv (eventuell mir case 2 verschmelzen)
+                case 1: //Map Übericht - Fortschritt
                         //Reiter = Inventory.png
                         break;
                 case 2: //Rätsel-Inventar aktiv
